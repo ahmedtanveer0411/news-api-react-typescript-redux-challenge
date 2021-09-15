@@ -3,6 +3,7 @@ import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import { CssBaseline } from "@material-ui/core";
 import Header from "./Header";
 import Footer from "./Footer";
+import Container from "@material-ui/core/Container";
 
 // define css-in-js
 const useStyles = makeStyles((theme: Theme) =>
@@ -42,14 +43,16 @@ const Layout: FC<Props> = ({ children }) => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      <CssBaseline />
-      <header>
-        <Header />
-      </header>
-      <main className={classes.content}>{children}</main>
-      <footer>
-        <Footer />
-      </footer>
+      <Container>
+        <CssBaseline />
+        <header>
+          <Header />
+        </header>
+        <main className={classes.content}>{children}</main>
+        <footer>
+          <Footer />
+        </footer>
+      </Container>
     </div>
   );
 };

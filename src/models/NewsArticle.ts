@@ -11,6 +11,7 @@ export interface NewsArticle {
 }
 
 export interface NewsState {
+  search: { term: string };
   news: { items: NewsArticle[] } | null;
 }
 

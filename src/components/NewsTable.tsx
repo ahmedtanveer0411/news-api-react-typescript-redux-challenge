@@ -7,8 +7,9 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { NewsState } from "../models/NewsArticle";
+import { NewsActions } from "../actions";
 
 const useStyles = makeStyles({
   table: {
@@ -17,14 +18,11 @@ const useStyles = makeStyles({
 });
 
 export default function NewsTable() {
-  const news = useSelector((state: NewsState) => {
+  const state = useSelector((state: NewsState) => {
     console.log("state", state);
-    return state.news;
+    return state;
   });
 
-  useEffect(() => {
-    console.log("newsState", news);
-  }, [news]);
   const classes = useStyles();
 
   return (
@@ -41,8 +39,8 @@ export default function NewsTable() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {news?.items?.map((item) => (
-            <TableRow key={item.title}>
+          {state?.news?.items?.map((item, index) => (
+            <TableRow key={index}>
               <TableCell component="th" scope="row">
                 <img
                   src={item.urlToImage}

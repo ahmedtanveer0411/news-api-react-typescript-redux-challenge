@@ -2,7 +2,7 @@ import { NewsConstants } from "../constants";
 import { ActionType, NewsState } from "../models/NewsArticle";
 
 export function news(
-  state: NewsState = { news: { items: [] } },
+  state: NewsState = { news: { items: [] }, search: { term: "" } },
   action: ActionType
 ) {
   console.log("News reducer", action.news, state);
